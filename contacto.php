@@ -26,8 +26,8 @@ $email_message .= "Comentarios: " . $_POST['mensaje'] . "\n\n";
 
 
 // Ahora se envía el e-mail usando la función mail() de PHP
-$headers = 'From: '.$email."\r\n".
-'Reply-To: '.$email."\r\n" .
+$headers = 'From: '.$_POST['email']."\r\n".
+'Reply-To: '.$_POST['email']."\r\n" .
 'X-Mailer: PHP/' . phpversion();
 @mail($email_to, $email_subject, $email_message, $headers);
 
