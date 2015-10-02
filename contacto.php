@@ -15,6 +15,5 @@
 		'X-Mailer: PHP/' .phpversion();
 
 	mail($destino,$asunto,$comentario,$headers);
-	header("Location: formulario.php");
-	echo"¡Mensaje enviado!";
+	echo"<script type=\"text/javascript\">alert('Mensaje enviado, volviendo a la pagina'); window.location='index.html';</script>";
 ?>
