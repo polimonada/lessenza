@@ -1,0 +1,8 @@
+/* Lessenza Perú fundada por Luis Amaya, en interacción y colaboracion con Paul Piscoya  en la elaboracion y diseño de la web*/
+/* lessenza.pe */
+/* humanstxt.org */
+
+/* SITE */
+  Standards: HTML5, CSS3
+  Components: jQuery
+  Software: Sublime, Git, Photoshop and Ilustrator

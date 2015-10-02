@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: 
+Disallow: /css/images
+Disallow: /img
+Sitemap: http://www.lessenza.pe/sitemap.xml
