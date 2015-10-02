@@ -1,30 +1,36 @@
-[php]
 <?php
-ob_start();
-$nombre = $_POST['nombre'];
-$razon = $_POST['razon'];
-$telefono = $_POST['telefono'];
-$email = $_POST['email'];
-$mensaje = $_POST['mensaje'];
-$para = 'informes@lessenza.pe';
-$titulo = 'Correo desde web';
-$header = 'From: ' . $email;
-$msjCorreo = "Nombre: $nombre\n E-Mail: $email\n Mensaje:\n $mensaje” Razon: $razon\n Telefono: $telefono\n";
+if(isset($_POST['email'])) {
 
-if ($_POST['submit']) {
-if (mail($para, $titulo, $msjCorreo, $header)) {
-echo '<script type="text/javascript">alert("Mensaje enviado, muchas gracias.");
- </script>';
+// Debes editar las próximas dos líneas de código de acuerdo con tus preferencias
+$email_to = "informes@lessenza.pe";
+$email_subject = "Contacto desde el sitio web";
 
-} else {
-echo  'Falló el envio';
+// Aquí se deberían validar los datos ingresados por el usuario
+if(!isset($_POST['nombre']) ||
+!isset($_POST['razon']) ||
+!isset($_POST['telefono']) ||
+!isset($_POST['email']) ||
+!isset($_POST['mensaje'])) {
+
+echo "<b>Ocurrió un error y el formulario no ha sido enviado. </b><br />";
+echo "Por favor, vuelva atrás y verifique la información ingresada<br />";
+die();
 }
+
+$email_message = "Detalles del formulario de contacto:\n\n";
+$email_message .= "Nombre: " . $_POST['nombre'] . "\n";
+$email_message .= "Razón: " . $_POST['razon'] . "\n";
+$email_message .= "Teléfono: " . $_POST['telefono'] . "\n";
+$email_message .= "Email: " . $_POST['email'] . "\n";
+$email_message .= "Comentarios: " . $_POST['mensaje'] . "\n\n";
+
+
+// Ahora se envía el e-mail usando la función mail() de PHP
+$headers = 'From: '.$email_from."\r\n".
+'Reply-To: '.$email_from."\r\n" .
+'X-Mailer: PHP/' . phpversion();
+@mail($email_to, $email_subject, $email_message, $headers);
+
+echo "¡El formulario se ha enviado con éxito!";
 }
-if ($redirect_is_necessary)
-{
-    header('Location: '.$url);
-    exit;
-}
-ob_end_flush();
 ?>
-[/php]
